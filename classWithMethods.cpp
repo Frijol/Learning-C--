@@ -5,15 +5,28 @@
 class Cat
 {
 public:
-	int getAge();
+	Cat(int initialAge);
+	~Cat();
+	int getAge() const;
 	void setAge(int age);
-	void Meow();
+	void Meow() const;
 
 private:
 	int itsAge;
 };
 
-int Cat::getAge()
+// constructor
+Cat::Cat(int initialAge)
+{
+	itsAge = initialAge;
+}
+
+// destructor
+Cat::~Cat()
+{}
+
+// Accessor functions
+int Cat::getAge() const
 {
 	return itsAge;
 }
@@ -23,15 +36,18 @@ void Cat::setAge(int age)
 	itsAge = age;
 }
 
-void Cat::Meow()
+void Cat::Meow() const
 {
 	std::cout << "Meow.\n";
 }
 
 int main()
 {
-	Cat Frisky;
-	Frisky.setAge(5);
+	Cat Frisky(5);
+	Frisky.Meow();
+	std::cout << "Frisky is a cat who is ";
+	std::cout << Frisky.getAge() << " years old.\n";
+	Frisky.setAge(7);
 	Frisky.Meow();
 	std::cout << "Frisky is a cat who is ";
 	std::cout << Frisky.getAge() << " years old.\n";
