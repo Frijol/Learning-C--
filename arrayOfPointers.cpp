@@ -6,6 +6,7 @@
 
 int main()
 {
+	// ARRAY OF POINTERS
 	Cat * Family[500];
 	int i;
 	Cat * pCat;
@@ -19,5 +20,22 @@ int main()
 	{
 		std::cout << "Cat #" << i << " is " << Family[i]->getAge() << std::endl;
 	}
+
+	// // // EVERYTHING ON THE HEAP INSTEAD OF JUST THE OBJECTS
+	// // BUT IT DOESN'T ACTUALLY WORK; CRASHES
+	// Cat * Family = new Cat[500];
+	// int i;
+	// Cat * pCat = Family;
+	// Cat * addr = pCat;
+	// for (i = 0; i < 500; i++)
+	// {
+	// 	pCat = addr + i;
+	// 	pCat->setAge(2*i+1);
+	// }
+	// for (i = 0; i < 500; i++)
+	// {
+	// 	pCat = addr + i;
+	// 	std::cout << "Cat #" << i << " is " << pCat->getAge() << std::endl;
+	// }
 	return 0;
 }
