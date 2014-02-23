@@ -4,6 +4,7 @@
 // you hide all of the other overloaded functionalities of
 // the original, even if you only override one.
 // Get around this with virtual functions.
+// If a class has any virtual functions, the destructor should be virtual too
 
 #include <iostream>
 
@@ -13,7 +14,7 @@ class Mammal
 {
 public:
 	Mammal(): itsAge(2), itsWeight(5) {std::cout << "Mammal constructor...\n"; }
-	~Mammal(){std::cout << "Mammal destructor...\n"; }
+	virtual ~Mammal(){std::cout << "Mammal destructor...\n"; }
 
 	int getAge() const {return itsAge; }
 	void setAge(int age) {itsAge = age; }
@@ -58,8 +59,9 @@ int main()
 
 	// Weird virtual function thing
 	Mammal *pDog = new Dog;
-	pDog->move();
+	pDog->move(); //virtual function, so looks for dog version
 	pDog->speak();
+	// pDog->begForFood(); // This cannot be done because there is no virtual function for it in Mammal.
 
 	return 0;
 }
