@@ -3,6 +3,7 @@
 // Note on overriding: if you override an overloaded function,
 // you hide all of the other overloaded functionalities of
 // the original, even if you only override one.
+// Get around this with virtual functions.
 
 #include <iostream>
 
@@ -19,8 +20,9 @@ public:
 	int getWeight() const {return itsWeight; }
 	void setWeight(int weight) {itsWeight = weight; }
 
-	void speak() const {std::cout << "Mammal sound!\n"; }
+	void speak() const {std::cout << "Mammal sound!\n"; } //virtual
 	void sleep() const {std::cout << "sshhh, I'm sleeping.\n"; }
+	virtual void move() const {std::cout << "Mammal move one step.\n"; }
 
 protected:				// protected: private not avail. to derived classes
 	int itsAge;
@@ -39,6 +41,7 @@ public:
 	void wagTail() const {std::cout << "Wagging tail...\n"; }
 	void begForFood() const {std::cout << "Begging for food...\n"; }
 	void speak() const {std::cout << "Woof!\n"; } //overrides mammal speak
+	void move() const {std::cout << "Dog move one step.\n"; }
 
 protected:
 	BREED itsBreed;
@@ -50,6 +53,13 @@ int main()
 	fido.speak(); //calls dog speak
 	fido.Mammal::speak(); //specifically calls mammal speak
 	fido.wagTail();
+	fido.sleep();
 	std::cout << "Fido is " << fido.getAge() << std::endl;
+
+	// Weird virtual function thing
+	Mammal *pDog = new Dog;
+	pDog->move();
+	pDog->speak();
+
 	return 0;
 }
