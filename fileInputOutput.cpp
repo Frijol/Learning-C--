@@ -1,3 +1,15 @@
+/*
+Default behavior of ofstream can be modified.
+Default: create file on opening if it doesn't already exist
+	and delete all its contents if it does.
+Modify behavior by adding second arg after filename:
+ios::app – append to end of existing file
+ios::ate – place at end of file, but you could write to anywhere in the file
+ios:trun (default) – truncate file
+ios::nocreat – if file does not exist, open fails
+ios::noreplac – if file does exist, open fails
+*/
+
 #include <fstream>
 #include <iostream>
 
