@@ -1,4 +1,5 @@
 // illustrates use of #define with #ifdef #ifndef #else #endif
+// You can also do #undef to undefine
 
 #include <iostream>
 #define DemoVersion
