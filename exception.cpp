@@ -1,4 +1,8 @@
 // Raising an exception
+// Includes:
+// 	Stripped-down Array class based on template
+// 	Complex inheritance & friends
+//	try/catch
 
 #include <iostream>
 
